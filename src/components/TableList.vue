@@ -27,11 +27,12 @@ export default {
   },
   methods: {
     selectTable: function (tableName, index) {
+      this.$store.dispatch('getHeaders', tableName)
+
       // this.$store.dispatch('showLoading')
       this.$store.dispatch('setResults', {
         'tableName': tableName
       })
-      this.$store.dispatch('getHeaders', tableName)
       this.$store.dispatch('setKeys', tableName)
       this.realSelectedIndex = index
       this.$store.dispatch('pushLastEvaluatedKey', this.lastEvaluatedKey)

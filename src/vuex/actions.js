@@ -96,7 +96,7 @@ export const hideLoading = ({ commit }) => {
   }, 3000)
 }
 
-export const getHeaders = ({ commit }, tableName) => {
+export const getHeaders = ({ commit, dispatch }, tableName) => {
   return info(tableName).then((response) => {
     commit(GET_TABLE_HEADERS, response)
   })

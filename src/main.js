@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Resource from 'vue-resource'
+import VueResource from 'vue-resource'
 import Router from 'vue-router'
 
 import App from './App'
@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-default/index.css'
 
 Vue.use(ElementUI)
 
-Vue.use(Resource)
+Vue.use(VueResource)
 Vue.use(Router)
 Vue.config.debug = true
 

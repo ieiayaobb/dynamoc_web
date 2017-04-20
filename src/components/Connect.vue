@@ -27,7 +27,7 @@
     name: 'Connect',
     data () {
       return {
-        host: '127.0.0.1:10000',
+        host: '192.168.3.70',
         accessKey: 'access_key',
         accessSecret: 'access_secret'
       }

@@ -27,7 +27,11 @@ const mutations = {
   [SET_RESULTS] (state, results) {
     var flattenResults = _.map(results['Items'], function (item) {
       return _.mapValues(item, function (ele) {
-        return _.values(ele)[0]
+        if (typeof _.values(ele)[0] === 'object') {
+          return JSON.stringify(_.values(ele)[0])
+        } else {
+          return _.values(ele)[0]
+        }
       })
     })
     state.results = flattenResults

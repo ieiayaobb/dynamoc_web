@@ -35,10 +35,10 @@
     beforeUpdate () {
       // this.$store.dispatch('hideLoading')
       // this.$store.dispatch('pushLastEvaluatedKey', this.lastEvaluatedKey)
-      console.log('TableData beforeUpdate')
+      // console.log('TableData beforeUpdate')
     },
     updated () {
-      console.log('TableData updated')
+      // console.log('TableData updated')
       // this.$store.dispatch('hideLoading')
       // this.loading = false
     }

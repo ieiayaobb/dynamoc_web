@@ -4,7 +4,6 @@
       :data="results"
       border
       height="460">
-
       <el-table-column
         fixed
         :prop="header['AttributeName']"
@@ -13,15 +12,13 @@
         width="100"
         show-overflow-tooltip>
       </el-table-column>
-
       <el-table-column
-        :prop="key"
-        :label="key"
-        v-for="key in normal"
+        :prop="normal_key"
+        :label="normal_key"
+        v-for="normal_key in normal"
         width="150"
         show-overflow-tooltip>
       </el-table-column>
-
       <el-table-column
         inline-template
         :context="_self"
@@ -60,16 +57,13 @@
           return header['AttributeName']
         })
         _.map(this.results, function (item) {
-          normalKeys = _.concat(normalKeys, _.keys(item))
+          normalKeys = _.union(normalKeys, _.keys(item))
         })
         return _.pullAll(_.uniq(normalKeys), freezedKeys)
       }
     },
     name: 'dataGrid',
-    data () {
-      return {
-      }
-    },
+
     methods: {
       view (index) {
         var payload = {}
@@ -111,21 +105,22 @@
         this.$store.dispatch('pushLastEvaluatedKey', this.lastEvaluatedKey)
       }
     },
-    watch: {
-      results: function (val, oldVal) {
-        // console.log(val)
-        // console.log(oldVal)
-      }
-    },
     props: {
       tableName: {
         type: String,
         required: false
       }
     },
+    data () {
+      return {
+        proxy_results: []
+      }
+    },
+    created () {
+    },
     beforeUpdate () {
       // this.$store.dispatch('hideLoading')
-      console.log('DataGrid beforeUpdate')
+      // console.log('DataGrid beforeUpdate')
     }
   }
 </script>
