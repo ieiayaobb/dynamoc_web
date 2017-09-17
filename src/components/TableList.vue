@@ -1,7 +1,7 @@
 <template>
   <div class="table-name-list-wrapper" v-loading.body="loading">
     <div class="table-name-list">
-      <div v-for="(table_name,index) in tables" class="table-item" :class="{ active: isActive(index) }" @click="selectTable(table_name, index)">
+      <div v-for="(table_name,index) in tables" :key="table_name" class="table-item" :class="{ active: isActive(index) }" @click="selectTable(table_name, index)">
         <i class="el-icon-document"></i><span class="table-name">{{ table_name }}</span>
       </div>
     </div>

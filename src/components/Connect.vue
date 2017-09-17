@@ -32,9 +32,11 @@
         accessSecret: 'access_secret'
       }
     },
-    computed: mapGetters({
-      connectShow: 'connectShow'
-    }),
+    computed: {
+      ...mapGetters([
+        'connectShow'
+      ])
+    },
     methods: {
       close () {
         this.$store.dispatch('hideConnect')

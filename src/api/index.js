@@ -1,38 +1,7 @@
-import {http} from 'vue'
 import AWS from 'aws-sdk'
 import _ from 'lodash'
 
-export const initAPI = () => {
-  const ROOT = '/'
-  const ACCEPT = 'application/json'
-  const CONTENT_TYPE = 'application/json'
-
-  http.options.root = ROOT
-  http.headers.common['Accept'] = ACCEPT
-  http.headers.common['Content-Type'] = CONTENT_TYPE
-  http.headers.put['Content-Type'] = CONTENT_TYPE
-  http.headers.post['Content-Type'] = CONTENT_TYPE
-  http.headers.patch['Content-Type'] = CONTENT_TYPE
-  http.headers.delete['Content-Type'] = CONTENT_TYPE
-
-  http.interceptors.push((req, next) => {
-    next((res) => {
-
-    })
-  })
-}
-
 var dynamodb
-
-export const api = (type = 'get', url, ...tail) => {
-  return http[type](url, ...tail)
-    .then((res) => {
-      return JSON.parse(res.body)
-    })
-    .catch(() => {
-      console.log('Hmm.. Something has gone awry. Please try again in a bit, or contact support.')
-    })
-}
 
 export const connect = (host, accessKey, accessSecret) => {
   AWS.config.update({
@@ -93,6 +62,19 @@ export const info = (tableName) => {
 export const list = () => {
   return new Promise(function (resolve, reject) {
     dynamodb.listTables({}, function (err, data) {
+      if (err) {
+        console.log(err, err.stack)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
+export const deleteByTableName = (tableName) => {
+  return new Promise(function (resolve, reject) {
+    console.log(tableName)
+    dynamodb.deleteTable({TableName: tableName}, function (err, data) {
       if (err) {
         console.log(err, err.stack)
       } else {

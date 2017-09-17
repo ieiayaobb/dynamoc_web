@@ -8,6 +8,7 @@
         fixed
         :prop="header['AttributeName']"
         :label="header['AttributeName']"
+        :key="header['AttributeName']"
         v-for="header in headers"
         width="100"
         show-overflow-tooltip>
@@ -15,6 +16,7 @@
       <el-table-column
         :prop="normal_key"
         :label="normal_key"
+        :key="normal_key"
         v-for="normal_key in normal"
         width="150"
         show-overflow-tooltip>
@@ -24,10 +26,10 @@
         :context="_self"
         fixed="right"
         label="Operation"
-        width="120">
+        width="100">
         <span>
           <el-button @click.native.prevent="view($index)" type="text" size="mini">View</el-button>
-          <el-button @click="deleteRecord" :disabled="true" type="text" size="mini">Delete</el-button>
+          <!-- <el-button @click="deleteRecord" :disabled="true" type="text" size="mini">Delete</el-button> -->
         </span>
       </el-table-column>
     </el-table>

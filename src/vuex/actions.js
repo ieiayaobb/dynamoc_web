@@ -3,6 +3,7 @@ import {
   query,
   connect,
   list,
+  deleteByTableName,
   record,
   info
 } from '../api/index'
@@ -17,6 +18,7 @@ import {
     GET_RECORD,
     HIDE_RECORD,
     LIST_TABLES,
+    DELETE_TABLE,
     SET_KEYS,
     SHOW_LOADING,
     HIDE_LOADING,
@@ -111,6 +113,12 @@ export const getInfo = ({ commit }, tableName) => {
 export const listTables = ({ commit }) => {
   return list().then((response) => {
     commit(LIST_TABLES, response)
+  })
+}
+
+export const deleteTable = ({ commit }, tableName) => {
+  return deleteByTableName(tableName).then((response) => {
+    commit(DELETE_TABLE, response)
   })
 }
 

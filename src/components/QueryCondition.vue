@@ -6,10 +6,12 @@
           <el-select v-model="currentKey" placeholder="Key" class="key-select" @change="changeKey">
             <el-option-group
               v-for="eachKey in keys"
+              :key="eachKey.label"
               :label="eachKey.label">
               <el-option
                 v-for="item in eachKey.options"
                 :label="item.label"
+                :key="item.label"
                 :value="item.value">
               </el-option>
             </el-option-group>
@@ -41,6 +43,11 @@
       <el-col :span="6">
         <div class="grid-content">
           <el-button type="primary" @click="query">{{ scanOrQuery }}</el-button>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content">
+          <el-button type="danger" @click="confirmDelete">Delete</el-button>
         </div>
       </el-col>
     </el-row>
@@ -92,6 +99,26 @@
         } else {
           this.scanOrQuery = 'Query'
         }
+      },
+      confirmDelete () {
+        this.$confirm('Will delete this table, continue?', 'Warning', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: 'Delete successfully!'
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: 'Canceled'
+          })
+        })
+      },
+      deleteTable: function () {
+        // this.$store.dispatch('deleteTable', this.tableName)
       }
     },
     computed: {

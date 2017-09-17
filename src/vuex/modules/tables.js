@@ -1,5 +1,6 @@
 import {
-  LIST_TABLES
+  LIST_TABLES,
+  DELETE_TABLE
 } from '../mutation-types'
 
 const state = {
@@ -13,6 +14,9 @@ const getters = {
 const mutations = {
   [LIST_TABLES] (state, response) {
     state.tables = response['TableNames']
+  },
+  [DELETE_TABLE] (state) {
+
   }
 }
 
