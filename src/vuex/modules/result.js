@@ -2,7 +2,9 @@ import {
   SET_RESULTS,
   PREVIOUS_SET_RESULTS,
   GET_TABLE_INFO,
-  GET_TABLE_HEADERS
+  GET_TABLE_HEADERS,
+  UPDATE_LOAD_BODY,
+  SET_TABLE_NAME
 } from '../mutation-types'
 
 import _ from 'lodash'
@@ -12,7 +14,8 @@ const state = {
   lastEvaluatedKey: {},
   headers: [],
   tableName: '',
-  tableInfo: {}
+  tableInfo: {},
+  loadBody: false
 }
 
 const getters = {
@@ -20,11 +23,13 @@ const getters = {
   lastEvaluatedKey: state => state.lastEvaluatedKey,
   tableName: state => state.tableName,
   tableInfo: state => state.tableInfo,
-  headers: state => state.headers
+  headers: state => state.headers,
+  loadBody: state => state.loadBody
 }
 
 const mutations = {
   [SET_RESULTS] (state, results) {
+    state.results = []
     var flattenResults = _.map(results['Items'], function (item) {
       return _.mapValues(item, function (ele) {
         if (typeof _.values(ele)[0] === 'object') {
@@ -39,6 +44,9 @@ const mutations = {
     state.tableName = results['tableName']
     state.lastEvaluatedKey = results['LastEvaluatedKey']
   },
+  [SET_TABLE_NAME] (state, tableName) {
+    state.tableName = tableName
+  },
   [PREVIOUS_SET_RESULTS] (state, results) {
     state.results = results['Items']
     // var lastEvaluatedKey = state.evaluatedKeys.pop()
@@ -47,7 +55,11 @@ const mutations = {
     state.tableInfo = results
   },
   [GET_TABLE_HEADERS] (state, results) {
+    state.headers = []
     state.headers = results['Table']['KeySchema']
+  },
+  [UPDATE_LOAD_BODY] (state, flag) {
+    state.loadBody = flag
   }
 }
 

@@ -3,13 +3,14 @@
     <el-table
       :data="results"
       border
-      height="460">
+      height="460"
+      @row-dblclick="view">
       <el-table-column
         fixed
         :prop="header['AttributeName']"
         :label="header['AttributeName']"
-        :key="header['AttributeName']"
-        v-for="header in headers"
+        :key="index"
+        v-for="(header,index) in headers"
         width="100"
         show-overflow-tooltip>
       </el-table-column>
@@ -21,7 +22,7 @@
         width="150"
         show-overflow-tooltip>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         inline-template
         :context="_self"
         fixed="right"
@@ -31,7 +32,7 @@
           <el-button @click.native.prevent="view($index)" type="text" size="mini">View</el-button>
           <!-- <el-button @click="deleteRecord" :disabled="true" type="text" size="mini">Delete</el-button> -->
         </span>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     <div class="pagination">
       <el-button-group>
@@ -67,9 +68,9 @@
     name: 'dataGrid',
 
     methods: {
-      view (index) {
+      view (row, event) {
         var payload = {}
-        var hashValue = this.results[index][this.headers[0]['AttributeName']]
+        var hashValue = row[this.headers[0]['AttributeName']]
         if (_.isNumber(hashValue)) {
           payload[this.headers[0]['AttributeName']] = {'N': hashValue}
         } else {
@@ -77,8 +78,8 @@
         }
 
         if (this.headers.length > 1) {
-          var rangeValue = this.results[index][this.headers[1]['AttributeName']]
-          payload[this.headers[1]['AttributeName']] = this.results[index][this.headers[1]['AttributeName']]
+          var rangeValue = row[this.headers[1]['AttributeName']]
+          payload[this.headers[1]['AttributeName']] = row[this.headers[1]['AttributeName']]
           if (_.isNumber(rangeValue)) {
             payload[this.headers[1]['AttributeName']] = {'N': rangeValue}
           } else {
@@ -123,6 +124,8 @@
     beforeUpdate () {
       // this.$store.dispatch('hideLoading')
       // console.log('DataGrid beforeUpdate')
+    },
+    updated () {
     }
   }
 </script>

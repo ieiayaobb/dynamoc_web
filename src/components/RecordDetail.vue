@@ -4,8 +4,11 @@
       <el-tabs v-model="activeTab" @tab-click="handleClick" class="tabs">
         <el-tab-pane label="Detail" name="detail">
           <el-form label-position="right" label-width="150px">
-            <el-form-item :label="key" v-for="(value, key) in record" :key="key">
-              <el-input auto-complete="off" :value="value"></el-input>
+            <el-form-item :label="key" v-for="(key, type) in primaryKey" :key="key">
+              <el-input auto-complete="off" :value="record[key]" disabled></el-input>
+            </el-form-item>
+            <el-form-item :label="key" v-for="(value, key) in freeRecord" :key="key">
+              <el-input auto-complete="off" @change="updateItem(value, key)" :value="value"></el-input>
             </el-form-item>
           </el-form>
         </el-tab-pane>
@@ -28,20 +31,30 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import _ from 'lodash'
 
   export default {
     name: 'RecordDetail',
     computed: {
       ...mapGetters({
+        primaryKey: 'primaryKey',
         show: 'recordShow',
         record: 'record'
       }),
       renderRecord: function () {
         return JSON.stringify(this.record, null, 4)
+      },
+      freeRecord: function () {
+        var deep = _.cloneDeep(this.record)
+        for (var key in this.primaryKey) {
+          delete deep[this.primaryKey[key]]
+        }
+        return deep
       }
     },
     data () {
       return {
+        inputRecord: {},
         activeTab: 'detail'
       }
     },
@@ -61,8 +74,12 @@
         this.$store.dispatch('hideRecord')
       },
       save () {
+        console.log(this.inputRecord)
       },
       deleteItem () {
+      },
+      updateItem (value, key) {
+        console.log(value, key)
       }
     },
     watch: {

@@ -14,6 +14,7 @@ import {
 
     GET_TABLE_HEADERS,
     GET_TABLE_INFO,
+    SET_TABLE_NAME,
     SET_RESULTS,
     GET_RECORD,
     HIDE_RECORD,
@@ -23,7 +24,9 @@ import {
     SHOW_LOADING,
     HIDE_LOADING,
     PUSH_LAST_EVALUATED_KEY,
-    POP_LAST_EVALUATED_KEY
+    POP_LAST_EVALUATED_KEY,
+
+    UPDATE_LOAD_BODY
 } from './mutation-types'
 import _ from 'lodash'
 
@@ -45,6 +48,7 @@ export const setResults = ({ commit }, payload) => {
   return scan(payload.tableName, payload.lastEvaluatedKey).then((response) => {
     response['tableName'] = payload.tableName
     commit(SET_RESULTS, response)
+    commit(UPDATE_LOAD_BODY, false)
   })
 }
 
@@ -101,7 +105,13 @@ export const hideLoading = ({ commit }) => {
 export const getHeaders = ({ commit, dispatch }, tableName) => {
   return info(tableName).then((response) => {
     commit(GET_TABLE_HEADERS, response)
+    commit(SET_TABLE_NAME, tableName)
+    commit(UPDATE_LOAD_BODY, true)
   })
+}
+
+export const updateLoadBody = ({ commit, dispatch }, flag) => {
+  commit(UPDATE_LOAD_BODY, flag)
 }
 
 export const getInfo = ({ commit }, tableName) => {
