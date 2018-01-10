@@ -46,5 +46,6 @@
 </script>
 <style scoped>
   .table-data {
+    height: 100%;
   }
 </style>

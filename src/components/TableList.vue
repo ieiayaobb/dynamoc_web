@@ -52,14 +52,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .table-name-list {
-  padding-bottom: 10px;
+  padding-bottom: 60px;
 }
 
 .table-name-list-wrapper {
   overflow-x: auto;
   overflow-y: auto;
-  max-height: 580px;
   min-height: 400px;
+  height: 100%;
 }
 
 .el-icon-menu {

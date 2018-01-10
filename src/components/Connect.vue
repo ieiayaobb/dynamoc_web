@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="connect">
     <el-dialog title="Connect to the database" v-model="connectShow" @close="close">
       <el-form label-position="right" label-width="120px">
         <el-form-item label="Host">
@@ -51,3 +51,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .connect {
+    position: absolute;
+  }
+</style>

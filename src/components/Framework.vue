@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="framework">
     <navibar></navibar>
-    <el-row :gutter="20">
-      <el-col :span="4">
+    <el-row :gutter="20" class="content">
+      <el-col :span="4" class="left">
         <tableList></tableList>
       </el-col>
-      <el-col :span="20" v-loading.body="loading">
+      <el-col :span="20" class="right" v-loading.body="loading">
         <tableData></tableData>
       </el-col>
     </el-row>
@@ -40,9 +40,17 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.framework {
+  height: 100vh;
+}
+
 .pagination {
   float: right;
   margin-top: 10px;
   margin-right: 10px;
+}
+
+.content, .left, .right {
+  height: 100%;
 }
 </style>

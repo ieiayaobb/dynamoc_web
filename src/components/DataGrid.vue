@@ -1,9 +1,8 @@
 <template>
-  <div class="data-grid">
+  <div class="data-grid" ref="data_grid">
     <el-table
       :data="results"
       border
-      height="460"
       @row-dblclick="view">
       <el-table-column
         fixed
@@ -63,7 +62,13 @@
           normalKeys = _.union(normalKeys, _.keys(item))
         })
         return _.pullAll(_.uniq(normalKeys), freezedKeys)
+      },
+      tableHeight: function () {
+        return 600
       }
+    },
+    mounted: function () {
+      console.log(this.$refs.data_grid.offsetHeight)
     },
     name: 'dataGrid',
 
@@ -132,7 +137,13 @@
 
 <style scoped>
   .data-grid {
+    height: 100%;
   }
+
+  .el-table {
+    height: 65%;
+  }
+
   .key {
     width: 80px;
     display: inline-block;
