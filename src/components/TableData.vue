@@ -47,5 +47,6 @@
 <style scoped>
   .table-data {
     height: 100%;
+    position: relative;
   }
 </style>
