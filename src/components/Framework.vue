@@ -40,17 +40,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.framework {
-  height: 100vh;
-}
+  .framework {
+    height: 100vh;
+    margin: 0;
+  }
 
-.pagination {
-  float: right;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.content, .left, .right {
-  height: 100%;
-}
+  .content{
+    position: absolute;
+    top:60px;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+  }
+  .left, .right {
+    height: 100%;
+  }
 </style>

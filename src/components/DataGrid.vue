@@ -5,7 +5,6 @@
       border
       @row-dblclick="view">
       <el-table-column
-        fixed
         :prop="header['AttributeName']"
         :label="header['AttributeName']"
         :key="index"
@@ -137,11 +136,17 @@
 
 <style scoped>
   .data-grid {
-    height: 100%;
+    position: absolute;
+    top:120px;
+    bottom: 0;
+    width: 100%;
   }
 
   .el-table {
-    height: 65%;
+    position: absolute;
+    top:0;
+    bottom: 60px;
+    overflow: scroll;
   }
 
   .key {
@@ -163,6 +168,7 @@
   }
 
   .pagination {
-    margin-top: 5px;
+    position: absolute;
+    bottom: 20px;
   }
 </style>
