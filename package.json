@@ -17,7 +17,8 @@
     "element-ui": "^1.4.4",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
-    "vuex": "^2.4.0"
+    "vuex": "^2.4.0",
+    "node-static": "^0.7.9"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -75,7 +76,7 @@
     "webpack-merge": "^2.6.1"
   },
   "engines": {
-    "node": ">= 4.0.0",
+    "node": "6.x",
     "npm": ">= 3.0.0"
   },
   "browserslist": [
