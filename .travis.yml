@@ -12,6 +12,5 @@ script:
 - npm run build
 deploy:
   provider: azure_web_apps
-  site: "Dynamoc"
   verbose: true
 
