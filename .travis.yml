@@ -12,6 +12,4 @@ script:
 - npm run build
 deploy:
   provider: azure_web_apps
-  username: "ieiayaobb@outlook.com"
-  password: "BE4@gN6RMdH*@iYpHmJD"
   site: "Dynamoc"
