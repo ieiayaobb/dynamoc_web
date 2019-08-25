@@ -12,6 +12,11 @@ install:
 script:
 - npm run build
 deploy:
-  provider: azure_web_apps
-  verbose: true
+  provider: elasticbeanstalk
+  access_key_id: "AKIAXUFQQYVW5KSSXCD7"
+  secret_access_key: "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"
+  region: "us-east-1"  
+  app: "dynamoc"
+  env: "dynamoc-environment"
+  bucket_name: "dynamoc-bucket"
 
