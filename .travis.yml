@@ -20,4 +20,4 @@ deploy:
   region: "us-east-1"  
   app: "dynamoc"
   env: "Dynamoc-env"
-  bucket_name: "elasticbeanstalk-us-west-1-524356207981"
+  bucket_name: "elasticbeanstalk-us-east-1-524356207981"
