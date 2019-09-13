@@ -11,8 +11,7 @@ script:
 deploy:
   provider: s3
   access_key_id: AKIAXUFQQYVW5FKPLO5G
-  secret_access_key:
-    secure: "pmx271p811+3rKm5YfNFb9WVm8+PmYKzufZ4oxTSJzqCp42zLm43+7BReWQa19Cq+GgLyAIEfCbcTwt+FOto+JkQZ9z3wFIlRXOW2xgSTINQuR9DYB6K80SV/aUERI0Yzmcci7XfjGTj5Y8v1/8MsaY4cYAifeaLu38v6iVtByLViXWoIlpfjfltkO+gZxMtju2eTUkz93SODO8jDldphjDjoJbyogx/6PYsITM90Yy5OBtgKNnJuMIIzkgBH45hzWfa5Zsy6JFl4dF/ERA+4MWmjt8yaQNSRf5gWdWiJxwmckcK+qXRipxMaiIYcADHzHMWWr4lF1oOPsoKAUkh/5pbMx9NUYXYNYipx863vT6Rd3+Hwa40D0ZjF9QwmXyHzHYOuAGiQ7xgBLKYzo4URgW3/02xBauD8/gv3gByU57vs0RPs0LELgxU1gWV74QRcTLXRFCLQJnrBeiuoORTb7sTorD9G4DLaZmyuSBCDhSWPTBmsULWPKgH+EciDJbyQizVDzFOM9/xpUZDyGogqSesFnSkKZy5qERx4scBl8+Bgx1GjDPDwEtD5X5SaoeSU+v0sYYfnxn2aSr2j7mxtPg5NNACLKD0S3xWYEiEEq/uM29C0gtOP0R96icebGQ96a3H0c9sQUICG3R1EP3oOT46PqXFfVdMOdHlCpi/07U="
+  secret_access_key: ${SECRET_ACCESS_KEY}
   bucket: dynamoc
   region: us-east-1
   local_dir: dist
