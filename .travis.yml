@@ -10,13 +10,10 @@ install:
 script:
 - npm run build
 deploy:
-  provider: elasticbeanstalk
+  provider: s3
   access_key_id: AKIAXUFQQYVW5FKPLO5G
   secret_access_key:
     secure: uRvGZ1eP2Ixf/KeWkJaP4ItYHBK3ymK1nZtucwZJxmFiQr0Y1SpVuZSc0NjoSIIcM4Huz96aEONb4rqPilKWvL4W7LQEqvhkApKSk4mxbbCyUDNI/lX2Plrz4JMSqynCQkAa3rWk4TjMwTE+i3pUCdEXMbJgmTbopvSwKYqpnhVPfWlzCP77ILoALftMtf45azZO2BInXejmqu2YgLHKpLp0TgqcV3L88nhGVFVWq9A3peWnnjWNFx6jcZ0/G8BXVFJQvLvR9jvb5rJOgMu7rllhjTfH2Gl5LaiNCkeUT1Tz6NIbTDXRP1iKDvihcFDcG8I7CFYMFoXrDi6IKaRvY+dWQSypDVIaCuHF121919d7RULKnBLX53mjpeMFKEDElm2/dpwZiPMJ/EXG9wLjreWBIyECtfJNz0cCuDdrSoH0UpWgyKrbX/ca0yM+3GqSEbl9jl3nNwDOzrdEjFZus6WtbPsnnlUr/1l+dM9KXkx38G5KF0i1hWSu0Hm9FMuyhHhar9++9JqqpqUebJAx7/5XnFsJmcO694OBE0O6PPlaWEfrPouBvtdCV/GovQm9VpqA4PQtUbxDR9fFUVRu+kNdQrIcQe5GxVIJaUR9VfMotvjE6CiJl+Jb9XtX9Yq44+48wCAuoZgvJJ1I4kwosckr+6etH3ZtrNN/pOzteUs=
+  bucket: dynamoc
   region: us-east-1
-  app: dynamoc
-  env: Dynamoc-env
-  bucket_name: elasticbeanstalk-us-east-1-524356207981
-  on:
-    repo: ieiayaobb/dynamoc_web
+  local_dir: dist
