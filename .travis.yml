@@ -1,5 +1,4 @@
 language: node_js
-file: dist/
 node_js:
 - '6'
 cache:
