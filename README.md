@@ -1,6 +1,7 @@
 # dynamoc_web
 
 > A Vue.js project
+> Demo URL: https://dynamoc.s3.amazonaws.com/index.html
 
 ## Build Setup
 
